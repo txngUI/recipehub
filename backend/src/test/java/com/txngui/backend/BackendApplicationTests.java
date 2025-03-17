@@ -1,4 +1,4 @@
-package com.recipehub.backend;
+package com.txngui.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
