@@ -17,6 +17,10 @@ import java.io.IOException;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
+    /**
+     * This class is used to intercept the incoming requests and validate the JWT token.
+     * If the token is valid, it sets the authentication in the context, to specify that the current user is authenticated.
+     */
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -24,10 +28,16 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+     * This method is used to intercept the incoming requests and validate the JWT token.
+     * If the token is valid, it sets the authentication in the context, to specify that the current user is authenticated.
+     * @param request: HttpServletRequest
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
+        // Extract the JWT token from the request header
         final String authorizationHeader = request.getHeader("Authorization");
 
         String username = null;

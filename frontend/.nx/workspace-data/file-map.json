@@ -1,0 +1,190 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.6.2",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "frontend": [
+        {
+          "file": ".editorconfig",
+          "hash": "8037249353422744134"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "10175894702052279752"
+        },
+        {
+          "file": ".postcssrc.json",
+          "hash": "4669205837238658830"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "11934160580685414355"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17406702432687230417"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "10093397977228577162"
+        },
+        {
+          "file": "README.md",
+          "hash": "758755696107841937"
+        },
+        {
+          "file": "angular.json",
+          "hash": "14299507309505562144"
+        },
+        {
+          "file": "components.json",
+          "hash": "3089158842223537119"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "1670360340653451545"
+        },
+        {
+          "file": "package.json",
+          "hash": "6538942632184027049",
+          "deps": [
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@spartan-ng/cli",
+            "npm:@types/jasmine",
+            "npm:autoprefixer",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:typescript",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:@tailwindcss/postcss",
+            "npm:lucide-angular",
+            "npm:postcss",
+            "npm:rxjs",
+            "npm:tailwindcss",
+            "npm:tslib",
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "src/app/app.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "6030846168876454154"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "8908278546121417694"
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "14529336276658059384"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "5157123044612920532"
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "2299679337177799176"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.css",
+          "hash": "12806825289283257651"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.html",
+          "hash": "4640374015742589251"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.spec.ts",
+          "hash": "8213465137135699087"
+        },
+        {
+          "file": "src/app/components/dashboard/dashboard.component.ts",
+          "hash": "1868328533496569524"
+        },
+        {
+          "file": "src/app/components/login/login.component.css",
+          "hash": "15107548596255930546"
+        },
+        {
+          "file": "src/app/components/login/login.component.html",
+          "hash": "9264692445788541399"
+        },
+        {
+          "file": "src/app/components/login/login.component.spec.ts",
+          "hash": "10730385221617188498"
+        },
+        {
+          "file": "src/app/components/login/login.component.ts",
+          "hash": "806482891112118955"
+        },
+        {
+          "file": "src/app/models/login-request.spec.ts",
+          "hash": "17753270836311319951"
+        },
+        {
+          "file": "src/app/models/login-request.ts",
+          "hash": "13790288723058297110"
+        },
+        {
+          "file": "src/app/models/login-response.spec.ts",
+          "hash": "703062734396035719"
+        },
+        {
+          "file": "src/app/models/login-response.ts",
+          "hash": "9287332881769596468"
+        },
+        {
+          "file": "src/app/services/auth.service.ts",
+          "hash": "10079720089511834556"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "10978432236329079223"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "4169901790405087765"
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "6546834412099992651"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "14560978611694835822"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "5540552589929968073"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "11023685540591620072"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}

@@ -21,9 +21,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtFilter jwtFilter) throws Exception {
-        http.csrf(csrf -> csrf.disable()) // Désactive CSRF temporairement
+        http.cors(cors -> cors.disable())
+                .csrf(csrf -> csrf.disable()) // Désactive CSRF temporairement
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/api/auth/login", "/api/auth/register").permitAll()  // Routes ouvertes
+                        .requestMatchers("/", "/api/auth/login", "/api/auth/test", "/api/auth/register").permitAll()  // Routes ouvertes
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

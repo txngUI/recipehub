@@ -1,3 +1,7 @@
-<router-outlet>
-</router-outlet> 
-
+<button
+  (click)="toggleDarkMode()"
+  class="fixed p-2 border-border border-[1px] dark:border-border-dark rounded-3xl cursor-pointer top-4 right-4"
+>
+  <lucide-icon size="24" [name]="isDarkMode ? 'moon' : 'sun'"></lucide-icon>
+</button>
+<router-outlet></router-outlet>

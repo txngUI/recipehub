@@ -1,42 +1,52 @@
 import { Component } from '@angular/core';
-import { IntegrationService } from '../../services/integration.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/login-request';
+import { Router } from '@angular/router';
+import { HlmButtonModule } from '@spartan-ng/ui-button-helm';
+import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
+import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    HlmButtonModule,
+    HlmFormFieldModule,
+    HlmInputDirective,
+    NgIf
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private integration: IntegrationService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   userForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   request: LoginRequest = new LoginRequest();
 
   login() {
-    const formValue = this.userForm.value;
-
-    if (formValue.username == '' || formValue.password == '') {
-      alert('Wrong Credentials');
+    if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched();
       return;
     }
 
-    this.request.username = formValue.username;
-    this.request.password = formValue.password;
+    this.request.username = this.userForm.value.username;
+    this.request.password = this.userForm.value.password;
 
-    this.integration.doLogin(this.request).subscribe({
+    this.authService.login(this.request).subscribe({
       next: (res) => {
-        console.log('Received Response:' + res.token);
+        this.authService.saveToken(res.token!);
+        this.router.navigate(['/dashboard']);
       },
-      error: (err) => {
-        console.log('Error Received Response:' + err);
+      error: () => {
+        alert('Login failed!');
       },
     });
   }
