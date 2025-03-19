@@ -25,4 +25,12 @@ RecipeHub est une application web qui permet une gestion efficace de votre cuisi
 
 ## 📂 Structure du projet
 
-recipehub/ │── frontend/ # Application Angular │ ├── src/ │ ├── angular.json │ ├── package.json │ ├── tsconfig.json │ └── ... │ │── backend/ # API Spring Boot │ ├── src/main/java/com/txngui/backend/ │ ├── pom.xml │ ├── application.properties │ ├── Dockerfile (si applicable) │ └── ... │ └── README.md # Ce fichier
+recipehub/ 
+│── frontend/ # Application Angular 
+  ├── src/ 
+  ├── angular.json 
+  ├── package.json 
+  ├── tsconfig.json │ └── ... 
+│── backend/ # API Spring Boot 
+  ├── src/main/java/com/txngui/backend/ 
+  ├── application.properties 
