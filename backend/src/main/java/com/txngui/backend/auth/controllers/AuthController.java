@@ -41,6 +41,7 @@ public class AuthController {
         return ResponseEntity.ok(userService.register(user));
     }
 
+
     /**
      * login a user
      * @param user the user to login

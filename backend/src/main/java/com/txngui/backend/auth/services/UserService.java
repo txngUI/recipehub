@@ -22,11 +22,13 @@ public class UserService {
     }
 
     public User register(User user) {
+
+//        System.out.println("Utilisateur avant enregistrement : " + user);
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
 
-        // Ajout d'un log pour voir l'utilisateur enregistré
-        System.out.println("Utilisateur enregistré : " + savedUser);
+//        System.out.println("Utilisateur enregistré : " + savedUser);
 
         return savedUser;
     }

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/login-request';
 import { Router } from '@angular/router';
@@ -16,20 +21,28 @@ import { NgIf } from '@angular/common';
     HlmButtonModule,
     HlmFormFieldModule,
     HlmInputDirective,
-    NgIf
+    NgIf,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  isDarkMode: any;
   constructor(private authService: AuthService, private router: Router) {}
 
   userForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
   request: LoginRequest = new LoginRequest();
+
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
 
   login() {
     if (this.userForm.invalid) {
@@ -43,7 +56,7 @@ export class LoginComponent {
     this.authService.login(this.request).subscribe({
       next: (res) => {
         this.authService.saveToken(res.token!);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/overview']);
       },
       error: () => {
         alert('Login failed!');

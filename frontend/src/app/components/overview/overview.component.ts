@@ -4,17 +4,19 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-overview',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './overview.component.html',
+  styleUrls: ['./overview.component.css']
 })
-export class DashboardComponent {
+export class OverviewComponent {
   username: string | null = '';
 
   constructor(private authService: AuthService, private router: Router) {
-    this.username = this.authService.getToken() ? 'User' : null;
+    this.authService.authState$.subscribe((isLoggedIn) => {
+      this.username = isLoggedIn ? 'User' : null;
+    });
   }
 
   logout() {
@@ -22,3 +24,4 @@ export class DashboardComponent {
     this.router.navigate(['/login']);
   }
 }
+

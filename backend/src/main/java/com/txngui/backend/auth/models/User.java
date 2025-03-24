@@ -2,6 +2,7 @@ package com.txngui.backend.auth.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "users")  // Collection MongoDB "users"
 public class User {
@@ -14,6 +15,8 @@ public class User {
     private String username;
     private String password;
     private String role = "USER"; // default role
+    @Field("email")
+    private String email;
 
     /**
      * constructor without parameters
@@ -25,9 +28,10 @@ public class User {
      * @param username username of the user
      * @param password password of the user
      */
-    public User(String username, String password) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     /**
@@ -79,6 +83,21 @@ public class User {
     public void setRole(String role) { this.role = role; }
 
     /**
+     * Getter of the email of the user
+     * @return the email of the user
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Setter of the email of the user
+     * @param email the email of the user
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    /**
      * toString is used to display the user object in a readable format
      * @return a string representation of the user object
      */
@@ -89,6 +108,9 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", mail=" + email + '\'' +
                 '}';
     }
+
+
 }

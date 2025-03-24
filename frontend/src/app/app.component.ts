@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LucideAngularModule, Sun, Moon } from 'lucide-angular';
+import { LucideAngularModule, Sun, Moon, ChartColumnDecreasing } from 'lucide-angular';
 
 @Component({
   selector: 'app-root',

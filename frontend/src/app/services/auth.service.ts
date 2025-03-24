@@ -1,33 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:8080/api/auth';
+  private authState = new BehaviorSubject<boolean>(this.isAuthenticated()); // ✅ Utilisation de la méthode existante
+
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:8080/api/auth';
+  /**
+   * Expose un Observable pour suivre l'état de l'authentification
+   */
+  authState$ = this.authState.asObservable();
 
   /**
    * Envoie les identifiants de l'utilisateur au backend pour l'authentification
-   * @param request - Contient username et password
-   * @returns Observable avec la réponse contenant le token JWT
    */
   login(request: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, request);
-  }
-
-  /**
-   * Stocke le token JWT dans le localStorage
-   * @param token - Token reçu après login
-   */
-  saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    return new Observable((observer) => {
+      this.http.post<LoginResponse>(`${this.apiUrl}/login`, request).subscribe({
+        next: (response) => {
+          if (response.token) {
+            this.saveToken(response.token);
+          } else {
+            observer.error(new Error('Token is undefined'));
+          }
+          this.authState.next(true); // ✅ Mise à jour de l'état d'authentification
+          observer.next(response);
+          observer.complete();
+        },
+        error: (err) => observer.error(err),
+      });
+    });
   }
 
   /**
@@ -38,18 +47,33 @@ export class AuthService {
     return localStorage.getItem('authToken');
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken'); 
-  }
-  
   /**
-   * Supprime le token JWT pour la déconnexion
+   * Stocke le token JWT dans le localStorage et met à jour l'état d'authentification
+   */
+  saveToken(token: string): void {
+    localStorage.setItem('authToken', token);
+    this.authState.next(true);
+  }
+
+  /**
+   * Vérifie si l'utilisateur est authentifié
+   */
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('authToken');
+  }
+
+  /**
+   * Déconnecte l'utilisateur en supprimant le token et en mettant à jour l'état
    */
   logout(): void {
     localStorage.removeItem('authToken');
+    this.authState.next(false);
   }
-  
-  register(user: { username: string; password: string }) {
+
+  /**
+   * Inscription d'un nouvel utilisateur
+   */
+  register(user: { username: string; email: string; password: string }) {
     return this.http.post<any>(`${this.apiUrl}/register`, user);
-  }  
+  }
 }

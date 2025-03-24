@@ -1,40 +1,145 @@
-<div class="parent">
-    <div class="container">
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
-        <h1>Sign Up</h1>
-  
-        <hlm-form-field label="Username">
-          <input type="text" hlmInput formControlName="username" placeholder="Enter your username" />
-          <div class="text-danger" *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].invalid">
-            <span *ngIf="registerForm.controls['username'].errors?.['required']">Username is required</span>
-          </div>
-        </hlm-form-field>
-  
-        <hlm-form-field label="Email">
-          <input type="email" hlmInput formControlName="email" placeholder="Enter your email" />
-          <div class="text-danger" *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
-            <span *ngIf="registerForm.controls['email'].errors?.['required']">Email is required</span>
-            <span *ngIf="registerForm.controls['email'].errors?.['email']">Enter a valid email</span>
-          </div>
-        </hlm-form-field>
-  
-        <hlm-form-field label="Password">
-          <input type="password" hlmInput formControlName="password" placeholder="Enter your password" />
-          <div class="text-danger" *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
-            <span *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</span>
-            <span *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters</span>
-          </div>
-        </hlm-form-field>
-  
-        <hlm-form-field label="Confirm Password">
-          <input type="password" hlmInput formControlName="confirmPassword" placeholder="Confirm your password" />
-          <div class="text-danger" *ngIf="registerForm.controls['confirmPassword'].touched && registerForm.controls['confirmPassword'].invalid">
-            <span *ngIf="registerForm.controls['confirmPassword'].errors?.['required']">Password confirmation is required</span>
-          </div>
-        </hlm-form-field>
-  
-        <button class="btn" hlmButton type="submit">Sign Up</button>
-      </form>
-    </div>
+<div
+  class="lg:w-1/2 md:w-full w-full sm:w-full mx-auto h-screen flex items-center justify-center"
+>
+  <div class="w-full flex flex-col items-center">
+    <img
+      src="assets/images/logo.png"
+      alt="logo"
+      class="logo"
+      width="100"
+      height="100"
+      class="mb-8"
+    />
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+      class="w-1/2 flex flex-col items-center"
+    >
+      <div class="flex justify-start items-center w-full mb-4">
+        <h1
+          (click)="goToLogin()"
+          class="self-start dark:text-white font-baloo font-bold text-2xl opacity-50 mr-4 hover:cursor-pointer"
+        >
+          Login
+        </h1>
+        <h1
+          class="self-start dark:text-white font-baloo font-bold text-2xl underline"
+        >
+          Register
+        </h1>
+      </div>
+
+      <hlm-form-field label="Username" class="w-full mb-8">
+        <input
+          type="text"
+          hlmInput
+          formControlName="username"
+          placeholder="Enter your username"
+          class="w-full"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            registerForm.controls['username'].touched &&
+            registerForm.controls['username'].invalid
+          "
+        >
+          <span *ngIf="registerForm.controls['username'].errors?.['required']"
+            >Username is required</span
+          >
+        </div>
+      </hlm-form-field>
+
+      <hlm-form-field label="Email" class="w-full mb-8">
+        <input
+          type="email"
+          hlmInput
+          formControlName="email"
+          placeholder="Enter your email"
+          class="w-full"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            registerForm.controls['email'].touched &&
+            registerForm.controls['email'].invalid
+          "
+        >
+          <span *ngIf="registerForm.controls['email'].errors?.['required']"
+            >Email is required</span
+          >
+          <span *ngIf="registerForm.controls['email'].errors?.['email']"
+            >Enter a valid email</span
+          >
+        </div>
+      </hlm-form-field>
+
+      <hlm-form-field label="Password" class="w-full mb-8">
+        <input
+          type="password"
+          hlmInput
+          formControlName="password"
+          placeholder="Enter your password"
+          class="w-full"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            registerForm.controls['password'].touched &&
+            registerForm.controls['password'].invalid
+          "
+        >
+          <span *ngIf="registerForm.controls['password'].errors?.['required']"
+            >Password is required</span
+          >
+          <span *ngIf="registerForm.controls['password'].errors?.['minlength']"
+            >Password must be at least 6 characters</span
+          >
+        </div>
+      </hlm-form-field>
+
+      <hlm-form-field label="Confirm Password" class="w-full mb-2">
+        <input
+          type="password"
+          hlmInput
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+          class="w-full"
+        />
+        <div
+          class="text-danger"
+          *ngIf="
+            registerForm.controls['confirmPassword'].touched &&
+            registerForm.controls['confirmPassword'].invalid
+          "
+        >
+          <span
+            *ngIf="registerForm.controls['confirmPassword'].errors?.['required']"
+            >Password confirmation is required</span
+          >
+        </div>
+      </hlm-form-field>
+
+      <div
+        class="text-danger mb-4"
+        *ngIf="registerForm.errors?.['passwordsNotMatching'] && registerForm.touched"
+      >
+        <span>Passwords do not match</span>
+      </div>
+
+      <p class="w-full text-center">
+        You already have an account ? Login
+        <u class="hover: cursor-pointer" (click)="goToLogin()">here</u>.
+      </p>
+
+      <button
+        class="btn"
+        hlmButton
+        type="submit"
+        class="w-fit mt-4 mx-auto px-8 py-2 rounded-xl bg-bg-button text-text-button font-baloo font-bold text-md hover:cursor-pointer"
+      >
+        Sign Up
+      </button>
+    </form>
   </div>
-  
+</div>

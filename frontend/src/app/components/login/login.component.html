@@ -1,4 +1,4 @@
-<div class="w-1/2 mx-auto h-screen flex items-center justify-center">
+<div class="lg:w-1/2 md:w-full w-full sm:w-full mx-auto h-screen flex items-center justify-center">
   <div class="w-full flex flex-col items-center">
     <img
       src="assets/images/logo.png"
@@ -6,21 +6,29 @@
       class="logo"
       width="100"
       height="100"
-      class="mb-8"
+      class="mb-8 "
     />
     <form
       [formGroup]="userForm"
       (ngSubmit)="login()"
       class="w-1/2 flex flex-col items-center"
     >
-      <h1 class="self-start">Login</h1>
+      <div class="flex justify-start items-center w-full mb-4">
+        <h1 class="self-start dark:text-white font-baloo font-bold text-2xl mr-4 underline">
+          Login
+        </h1>
+        <h1 (click)=goToRegister() class="self-start dark:text-white  font-baloo font-bold text-2xl opacity-50 hover:cursor-pointer">
+          Register
+        </h1>
+      </div>
+
       <hlm-form-field label="Username" class="w-full mb-8">
         <input
           type="text"
           hlmInput
           formControlName="username"
           placeholder="Enter your username"
-          class="w-full"
+          class="w-full bg-bg-color"
         />
         <div
           class="text-danger"
@@ -59,17 +67,27 @@
         </div>
       </hlm-form-field>
 
-      <p class="w-full text-center mt-8">
-        You don't have an account ? Sign in <u>here</u>.
+      <p class="w-full text-center mt-6">
+        You don't have an account ? Sign in <u class="hover: cursor-pointer" (click)=goToRegister()>here</u>.
       </p>
 
       <button
         class="btn"
         hlmButton
         type="submit"
-        class="w-fit mx-auto px-8 py-2 rounded-xl bg-bg-button text-text-button"
+        class="w-fit mt-4 mx-auto px-8 py-2 rounded-xl bg-bg-button text-text-button font-baloo font-bold text-md hover:cursor-pointer"
       >
         Login
+      </button>
+      <p class="mt-4">or</p>
+      <button
+        class="btn"
+        hlmButton
+        type="submit"
+        class="w-fit mt-4 mx-auto px-4 py-2 rounded-xl bg-white text-bg-button  text-md hover:cursor-pointer"
+      >
+        <i class="fab fa-google mr-2"></i> 
+        Login with Google
       </button>
     </form>
   </div>
