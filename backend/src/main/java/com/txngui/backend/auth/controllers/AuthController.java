@@ -1,8 +1,8 @@
 package com.txngui.backend.auth.controllers;
 
 import com.txngui.backend.auth.security.JwtUtil;
-import com.txngui.backend.auth.models.User;
-import com.txngui.backend.auth.services.UserService;
+import com.txngui.backend.user.models.User;
+import com.txngui.backend.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

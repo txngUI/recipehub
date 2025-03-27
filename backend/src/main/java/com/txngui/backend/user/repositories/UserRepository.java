@@ -1,6 +1,6 @@
-package com.txngui.backend.auth.repositories;
+package com.txngui.backend.user.repositories;
 
-import com.txngui.backend.auth.models.User;
+import com.txngui.backend.user.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

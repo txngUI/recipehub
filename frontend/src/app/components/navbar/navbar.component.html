@@ -8,16 +8,18 @@
         width="50"
         height="50"
       />
-      <a routerLink="/" class="logo ml-4 text-2xl font-baloo font-bold"
+      <a
+        routerLink="/"
+        class="logo ml-4 text-2xl font-baloo font-bold hover:cursor-pointer"
         >RecipeHub</a
       >
     </div>
-    <ul class="flex flex-row items-center justify-around w-3/5 mr-8">
+    <ul class="flex flex-row items-center justify-around w-3/5">
       <li>
         <a
           routerLink="/overview"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
+          [ngClass]="{ 'active': isActive('/overview') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300 "
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -28,9 +30,9 @@
       </li>
       <li>
         <a
-          routerLink="/about"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
+          routerLink="/recipes"
+          [ngClass]="{ 'active': isActive('/recipes') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -41,9 +43,9 @@
       </li>
       <li>
         <a
-          routerLink="/contact"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
+          routerLink="/meal_program"
+          [ngClass]="{ 'active': isActive('/meal_program') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -54,9 +56,9 @@
       </li>
       <li>
         <a
-          routerLink="/contact"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
+          routerLink="/equipment"
+          [ngClass]="{ 'active': isActive('/equipment') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -67,9 +69,9 @@
       </li>
       <li>
         <a
-          routerLink="/contact"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
+          routerLink="/shopping_list"
+          [ngClass]="{ 'active': isActive('/shopping_list') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -78,33 +80,29 @@
           >Shopping list</a
         >
       </li>
-      <li
-        class="bg-bg-button-nav text-text-button-nav py-1 px-1 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl"
-      >
-        <img
-          src="assets/images/profile-photo.jpg"
-          alt="logo"
-          class="logo rounded-xl"
-          width="50"
-          height="50"
-        />
-      </li>
-      <!-- <li *ngIf="!isLoggedIn">
-        <a
-          routerLink="/login"
-          routerLinkActive="active"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl"
-          >Login</a
-        >
-      </li>
-      <li *ngIf="isLoggedIn">
-        <a
-          (click)="logout()"
-          class="logout-btn"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo text-xl"
-          >Logout</a
-        >
-      </li> -->
+
+      <brn-popover>
+        <button brnPopoverTrigger class="rounded-xl hover:cursor-pointer">
+          <li
+            class="bg-bg-button-nav text-text-button-nav py-1 px-1 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl hover:bg-[#535353] hover:text-white transition-all duration-300"
+          >
+            <img
+              src="assets/images/profile-photo.jpg"
+              alt="Profile"
+              class="logo rounded-xl"
+              width="55"
+              height="55"
+            />
+          </li>
+        </button>
+
+        <div class="popover-content" *brnPopoverContent="let ctx" class="bg-white px-2 py-2 rounded-lg shadow-lg w-48 mt-1.5">
+          <h4 class="font-medium">Welcome {{ user.username }} !</h4>
+          <p>Your mail : {{ user.email }}</p>
+          <button class="bg-[#ff4d4d] text-white border-none px-2.5 py-1.5 mt-5 cursor-pointer rounded-md text-sm w-full" >Change your password</button>
+          <button class="bg-[#ff4d4d] text-white border-none px-2.5 py-1.5 mt-2.5 cursor-pointer rounded-md text-sm w-full" (click)="logout()">Logout</button>
+        </div>
+      </brn-popover>
     </ul>
   </div>
 </nav>

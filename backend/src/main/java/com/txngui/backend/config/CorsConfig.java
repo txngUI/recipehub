@@ -17,6 +17,7 @@ public class CorsConfig {
         config.setAllowedOrigins(List.of("http://localhost:4200")); // Autoriser Angular
         config.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setExposedHeaders(List.of("Authorization")); // ✅ Permettre la lecture du header Authorization
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

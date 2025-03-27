@@ -1,4 +1,4 @@
-package com.txngui.backend.auth.models;
+package com.txngui.backend.user.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

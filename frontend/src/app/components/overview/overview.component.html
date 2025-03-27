@@ -1,6 +1,8 @@
 <div class="overview-container">
-    <h1>Bienvenue, {{ username }} !</h1>
-    <p>Vous êtes connecté à votre tableau de bord.</p>
-    
-    <button class="btn-logout" (click)="logout()">Déconnexion</button>
+  <div *ngIf="user">
+    <h1>Bienvenue, {{ user.username }} !</h1>
+    <p>Email : {{ user.email }}</p>
   </div>
+
+  <button class="btn-logout" (click)="logout()">Déconnexion</button>
+</div>

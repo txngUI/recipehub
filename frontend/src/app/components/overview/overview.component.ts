@@ -12,11 +12,19 @@ import { CommonModule } from '@angular/common';
 })
 export class OverviewComponent {
   username: string | null = '';
+  user: any;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.authState$.subscribe((isLoggedIn) => {
-      this.username = isLoggedIn ? 'User' : null;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+      this.username = user ? user.username : null; 
     });
+
+    if (this.authService.isAuthenticated()) {
+      this.authService.fetchUserData(); // ✅ Charge les infos utilisateur si connecté
+    }
   }
 
   logout() {

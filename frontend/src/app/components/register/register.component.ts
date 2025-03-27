@@ -1,34 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   Validators,
-  ReactiveFormsModule,
   AbstractControl,
   ValidationErrors,
+  ReactiveFormsModule
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule, NgIf } from '@angular/common';
 import { HlmButtonModule } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
-import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { NgIf } from '@angular/common';
+import { HlmInputModule } from '@spartan-ng/ui-input-helm'; // ✅ Corrigé
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
+    CommonModule, // ✅ Ajouté pour éviter l'erreur sur NgIf
+    ReactiveFormsModule, // ✅ Ajouté pour résoudre l'erreur sur formGroup
     HlmButtonModule,
     HlmFormFieldModule,
-    HlmInputDirective,
-    NgIf,
+    HlmInputModule, // ✅ Remplace HlmInputDirective
+    NgIf
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'], // ✅ Correction de "styleUrl"
 })
 export class RegisterComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   registerForm: FormGroup = new FormGroup(
     {
@@ -37,17 +39,16 @@ export class RegisterComponent {
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
-    { validators: RegisterComponent.passwordsMatchValidator } // Correction ici
+    { validators: RegisterComponent.passwordsMatchValidator }
   );
 
   static passwordsMatchValidator(formGroup: AbstractControl): ValidationErrors | null {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
 
-    if (password && confirmPassword && password !== confirmPassword) {
-      return { passwordsNotMatching: true };
-    }
-    return null;
+    return password && confirmPassword && password !== confirmPassword
+      ? { passwordsNotMatching: true }
+      : null;
   }
 
   goToLogin() {

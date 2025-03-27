@@ -4,6 +4,7 @@ import { LucideAngularModule, Sun, Moon, ChartColumnDecreasing } from 'lucide-an
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, LucideAngularModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

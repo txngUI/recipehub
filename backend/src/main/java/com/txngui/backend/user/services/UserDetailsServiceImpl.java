@@ -1,8 +1,8 @@
-package com.txngui.backend.auth.services;
+package com.txngui.backend.user.services;
 
-import com.txngui.backend.auth.models.User;
-import com.txngui.backend.auth.models.UserDetailsImpl;
-import com.txngui.backend.auth.repositories.UserRepository;
+import com.txngui.backend.user.models.User;
+import com.txngui.backend.user.models.UserDetailsImpl;
+import com.txngui.backend.user.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

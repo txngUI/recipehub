@@ -1,6 +1,6 @@
 package com.txngui.backend.auth.security;
 
-import com.txngui.backend.auth.services.UserDetailsServiceImpl;
+import com.txngui.backend.user.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +24,7 @@ public class SecurityConfig {
         http.cors(cors -> cors.disable())
                 .csrf(csrf -> csrf.disable()) // Désactive CSRF temporairement
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/api/auth/login", "/api/auth/test", "/api/auth/register").permitAll()  // Routes ouvertes
+                        .requestMatchers("/", "/api/auth/login", "/api/user/**", "/api/auth/test", "/api/auth/register").permitAll()  // Routes ouvertes
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

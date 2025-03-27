@@ -1,10 +1,9 @@
-package com.txngui.backend.auth.services;
+package com.txngui.backend.user.services;
 
 
-import com.txngui.backend.auth.models.User;
-import com.txngui.backend.auth.repositories.UserRepository;
+import com.txngui.backend.user.models.User;
+import com.txngui.backend.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +38,9 @@ public class UserService {
             return user;
         }
         return Optional.empty();
+    }
+
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

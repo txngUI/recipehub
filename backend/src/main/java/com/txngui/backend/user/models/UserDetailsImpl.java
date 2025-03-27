@@ -1,4 +1,4 @@
-package com.txngui.backend.auth.models;
+package com.txngui.backend.user.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
