@@ -18,8 +18,8 @@
       <li>
         <a
           routerLink="/overview"
-          [ngClass]="{ 'active': isActive('/overview') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300 "
+          [ngClass]="{ active: isActive('/overview') }"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -31,7 +31,7 @@
       <li>
         <a
           routerLink="/recipes"
-          [ngClass]="{ 'active': isActive('/recipes') }"
+          [ngClass]="{ active: isActive('/recipes') }"
           class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
@@ -44,7 +44,7 @@
       <li>
         <a
           routerLink="/meal_program"
-          [ngClass]="{ 'active': isActive('/meal_program') }"
+          [ngClass]="{ active: isActive('/meal_program') }"
           class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
@@ -57,7 +57,7 @@
       <li>
         <a
           routerLink="/equipment"
-          [ngClass]="{ 'active': isActive('/equipment') }"
+          [ngClass]="{ active: isActive('/equipment') }"
           class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
@@ -70,7 +70,7 @@
       <li>
         <a
           routerLink="/shopping_list"
-          [ngClass]="{ 'active': isActive('/shopping_list') }"
+          [ngClass]="{ active: isActive('/shopping_list') }"
           class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
           ><lucide-icon
             size="28"
@@ -96,11 +96,30 @@
           </li>
         </button>
 
-        <div class="popover-content" *brnPopoverContent="let ctx" class="bg-white px-2 py-2 rounded-lg shadow-lg w-48 mt-1.5">
+        <div
+          class="popover-content"
+          *brnPopoverContent="let ctx"
+          class="bg-white px-2 py-2 rounded-lg shadow-lg w-48 mt-1.5"
+        >
+          <button
+            class="top-4 right-2 absolute hover:cursor-pointer"
+            (click)="ctx.close()"
+          >
+            <lucide-icon size="20" [name]="icons.X"></lucide-icon>
+          </button>
           <h4 class="font-medium">Welcome {{ user.username }} !</h4>
           <p>Your mail : {{ user.email }}</p>
-          <button class="bg-[#ff4d4d] text-white border-none px-2.5 py-1.5 mt-5 cursor-pointer rounded-md text-sm w-full" >Change your password</button>
-          <button class="bg-[#ff4d4d] text-white border-none px-2.5 py-1.5 mt-2.5 cursor-pointer rounded-md text-sm w-full" (click)="logout()">Logout</button>
+          <button
+            class="bg-[#89FAD8] hover:bg-[#22FFBE] transition-all duration-[200ms] text-bg-button border-none px-2.5 py-1.5 mt-5 cursor-pointer rounded-md text-sm w-full"
+          >
+            Change your password
+          </button>
+          <button
+            class="bg-[#ff4d4d] hover:bg-[#EE3535] transition-all duration-[200ms] text-white border-none px-2.5 py-1.5 mt-2.5 cursor-pointer rounded-md text-sm w-full"
+            (click)="logout()"
+          >
+            Logout
+          </button>
         </div>
       </brn-popover>
     </ul>

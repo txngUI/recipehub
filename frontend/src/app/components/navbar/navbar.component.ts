@@ -9,6 +9,7 @@ import {
   CalendarDays,
   ChefHat,
   ShoppingBasket,
+  X,
 } from 'lucide-angular';
 import {
   BrnPopoverCloseDirective,
@@ -20,6 +21,7 @@ import {
   HlmPopoverCloseDirective,
   HlmPopoverContentDirective,
 } from '@spartan-ng/ui-popover-helm';
+import { ElementRef, Renderer2, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -32,7 +34,7 @@ import {
     BrnPopoverComponent,
     BrnPopoverContentDirective,
     BrnPopoverTriggerDirective,
-    RouterLink
+    RouterLink,
   ],
   template: `
     <brn-popover sideOffset="5">
@@ -101,11 +103,17 @@ export class NavbarComponent implements OnInit {
     CalendarDays,
     ChefHat,
     ShoppingBasket,
+    X,
   };
 
   isLoggedIn = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private eRef: ElementRef,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit() {
     // ✅ On écoute `authState$` pour détecter les changements
@@ -115,7 +123,7 @@ export class NavbarComponent implements OnInit {
 
     this.authService.user$.subscribe((user) => {
       this.user = user;
-      this.username = user ? user.username : null; 
+      this.username = user ? user.username : null;
     });
 
     if (this.authService.isAuthenticated()) {
@@ -135,5 +143,13 @@ export class NavbarComponent implements OnInit {
   toggleMenu() {
     const navLinks = document.querySelector('.nav-links') as HTMLElement;
     navLinks.classList.toggle('show');
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    const popover = document.querySelector('.popover-content');
+    if (popover && !this.eRef.nativeElement.contains(event.target)) {
+      this.renderer.setStyle(popover, 'display', 'none'); // Cache le popover
+    }
   }
 }
