@@ -5,7 +5,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { LoginRequest } from '../../models/login-request';
 import { Router } from '@angular/router';
 import { HlmButtonModule } from '@spartan-ng/ui-button-helm';

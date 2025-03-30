@@ -7,7 +7,7 @@ import {
   ValidationErrors,
   ReactiveFormsModule
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { HlmButtonModule } from '@spartan-ng/ui-button-helm';

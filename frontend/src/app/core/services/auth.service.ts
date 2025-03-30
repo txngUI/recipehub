@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { LoginRequest } from '../models/login-request';
-import { LoginResponse } from '../models/login-response';
+import { LoginRequest } from '../../models/login-request';
+import { LoginResponse } from '../../models/login-response';
 
 @Injectable({
   providedIn: 'root',

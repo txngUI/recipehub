@@ -30,3 +30,7 @@ body {
   color: var(--text-color);
 }
 
+html.dark a.active {
+  background-color: black !important;
+  color: #FCF3EA !important;
+}

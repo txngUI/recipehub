@@ -14,12 +14,12 @@
         >RecipeHub</a
       >
     </div>
-    <ul class="flex flex-row items-center justify-around w-3/5">
+    <ul class="flex flex-row items-center justify-around sm:w-3/4 md:3/4 lg:3/4 xl:w-3/4 2xl:w-3/5">
       <li>
         <a
           routerLink="/overview"
           [ngClass]="{ active: isActive('/overview') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -32,7 +32,7 @@
         <a
           routerLink="/recipes"
           [ngClass]="{ active: isActive('/recipes') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -45,7 +45,7 @@
         <a
           routerLink="/meal_program"
           [ngClass]="{ active: isActive('/meal_program') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -58,7 +58,7 @@
         <a
           routerLink="/equipment"
           [ngClass]="{ active: isActive('/equipment') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -71,7 +71,7 @@
         <a
           routerLink="/shopping_list"
           [ngClass]="{ active: isActive('/shopping_list') }"
-          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white transition-all duration-300"
+          class="bg-bg-button-nav text-text-button-nav py-4 px-4 font-baloo font-bold text-xl flex flex-row items-center justify-center rounded-2xl hover:cursor-pointer hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           ><lucide-icon
             size="28"
             class="mr-2"
@@ -84,7 +84,7 @@
       <brn-popover>
         <button brnPopoverTrigger class="rounded-xl hover:cursor-pointer">
           <li
-            class="bg-bg-button-nav text-text-button-nav py-1 px-1 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl hover:bg-[#535353] hover:text-white transition-all duration-300"
+            class="bg-bg-button-nav text-text-button-nav py-1 px-1 font-baloo text-xl flex flex-row items-center justify-center rounded-2xl hover:bg-[#535353] hover:text-white dark:bg-[#12211D] dark:hover:bg-[#000000] dark:text-[#D1ECE4] dark:hover:text-[#FCF3EA] transition-all duration-300"
           >
             <img
               src="assets/images/profile-photo.jpg"
@@ -99,7 +99,7 @@
         <div
           class="popover-content"
           *brnPopoverContent="let ctx"
-          class="bg-white px-2 py-2 rounded-lg shadow-lg w-48 mt-1.5"
+          class="bg-white px-2 py-2 rounded-lg shadow-lg w-48 mt-1.5 dark:bg-[#12211D] dark:text-[#D1ECE4]"
         >
           <button
             class="top-4 right-2 absolute hover:cursor-pointer"

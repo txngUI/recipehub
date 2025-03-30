@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RecipesMangamentComponent } from "./components/recipes-management/recipes-management.component";
 
 @Component({
   selector: 'app-recipes',
-  imports: [],
+  imports: [RecipesMangamentComponent],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
