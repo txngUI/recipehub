@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -12,6 +13,7 @@
   --color-bg-button-active: #535353;
   --color-text-button-active: #FFFFFF;
   --font-baloo: 'Baloo Bhai', cursive, sans-serif;
+  --font-allura: 'Allura', cursive, sans-serif;
 }
 
 :root {
